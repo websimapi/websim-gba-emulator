@@ -4,7 +4,8 @@ import { readFileAsArrayBuffer, downloadFile } from './utils.js';
 
 class GBAEmulator {
     constructor() {
-        // Import the library without using default export
+        // Use the globally available GameBoyAdvance constructor
+        // instead of trying to import it as a module
         this.gba = new window.GameBoyAdvance();
         this.controls = new GamepadControls(this);
         this.canvas = document.getElementById('screen');
@@ -29,6 +30,15 @@ class GBAEmulator {
         
         // Calculate FPS
         setInterval(() => this._updateFPS(), 1000);
+        
+        // Frame counter for FPS calculation
+        const runFrame = () => {
+            if (this.romLoaded && !this.paused) {
+                this.frameCount++;
+            }
+            requestAnimationFrame(runFrame);
+        };
+        requestAnimationFrame(runFrame);
     }
 
     _setupFileInputs() {
@@ -204,5 +214,11 @@ class GBAEmulator {
 
 // Initialize the emulator when the page is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Make sure the GameBoyAdvance constructor is available
+    if (typeof window.GameBoyAdvance !== 'function') {
+        console.error('GameBoyAdvance library not loaded correctly');
+        return;
+    }
+    
     window.emulator = new GBAEmulator();
 });
