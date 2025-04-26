@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.emulator {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7d32a8;
+}
+
+.screen-container {
+    position: relative;
+    margin: 0 auto 20px;
+    width: 240px;
+    height: 160px;
+    border: 5px solid #333;
+    border-radius: 5px;
+    background-color: #000;
+}
+
+#screen {
+    display: block;
+    background-color: #000;
+    image-rendering: pixelated;
+}
+
+#fps-counter {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: yellow;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "dpad . action"
+        "select-start . shoulder";
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.d-pad {
+    grid-area: dpad;
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.d-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.up { top: 0; left: 40px; }
+.right { top: 40px; left: 80px; }
+.down { top: 80px; left: 40px; }
+.left { top: 40px; left: 0; }
+
+.action-buttons {
+    grid-area: action;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.a-btn, .b-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #7d32a8;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.select-start {
+    grid-area: select-start;
+    display: flex;
+    gap: 10px;
+}
+
+.select-btn, .start-btn {
+    padding: 8px 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shoulder-buttons {
+    grid-area: shoulder;
+    display: flex;
+    gap: 10px;
+}
+
+.l-btn, .r-btn {
+    padding: 8px 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-controls {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-upload label {
+    width: 150px;
+    font-weight: bold;
+}
+
+.emulator-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.emulator-controls button {
+    padding: 8px 15px;
+    background-color: #7d32a8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+    .buttons {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "dpad"
+            "action"
+            "select-start"
+            "shoulder";
+    }
+    
+    .d-pad, .action-buttons, .select-start, .shoulder-buttons {
+        margin: 0 auto;
+    }
+}
+

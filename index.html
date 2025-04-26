@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBA Emulator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/gbajs@1.1.2/js/gba.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "gbajs": "https://cdn.jsdelivr.net/npm/gbajs@1.1.2/js/gba.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="emulator">
+            <h1>Game Boy Advance Emulator</h1>
+            <div class="screen-container">
+                <canvas id="screen" width="240" height="160"></canvas>
+                <div id="fps-counter">0 FPS</div>
+            </div>
+            
+            <div class="controls">
+                <div class="buttons">
+                    <div class="d-pad">
+                        <button id="up" class="d-btn up">↑</button>
+                        <button id="right" class="d-btn right">→</button>
+                        <button id="down" class="d-btn down">↓</button>
+                        <button id="left" class="d-btn left">←</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="a" class="a-btn">A</button>
+                        <button id="b" class="b-btn">B</button>
+                    </div>
+                    <div class="select-start">
+                        <button id="select" class="select-btn">SELECT</button>
+                        <button id="start" class="start-btn">START</button>
+                    </div>
+                    <div class="shoulder-buttons">
+                        <button id="l" class="l-btn">L</button>
+                        <button id="r" class="r-btn">R</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="file-controls">
+                <div class="file-upload">
+                    <label for="bios-file">Upload BIOS:</label>
+                    <input type="file" id="bios-file" accept=".bin">
+                </div>
+                <div class="file-upload">
+                    <label for="rom-file">Upload ROM:</label>
+                    <input type="file" id="rom-file" accept=".gba">
+                </div>
+                <div class="file-upload">
+                    <label for="save-file">Upload Save (optional):</label>
+                    <input type="file" id="save-file" accept=".sav">
+                </div>
+            </div>
+            
+            <div class="emulator-controls">
+                <button id="play-pause">Pause</button>
+                <button id="reset">Reset</button>
+                <button id="save-state">Save State</button>
+                <button id="load-state">Load State</button>
+                <button id="download-save">Download Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="utils.js" type="module"></script>
+    <script src="storage.js" type="module"></script>
+    <script src="controls.js" type="module"></script>
+    <script src="emulator.js" type="module"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
